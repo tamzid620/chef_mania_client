@@ -5,6 +5,7 @@ import About from "../Home/Header/About";
 import Contact from "../Home/Header/Contact";
 import Blog from "../Home/Header/Blog";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Recipes from "../Home/Recipes/Recipes";
   
   const router = createBrowserRouter([
     {
@@ -26,7 +27,11 @@ import ErrorPage from "../ErrorPage/ErrorPage";
         },
         {
           path: '/blog',
-          element:<Blog></Blog>
+          element:<Blog></Blog>,
+        },
+        {
+          path: '/recipes',
+          element:<Recipes></Recipes>,
         },
       ]
     },

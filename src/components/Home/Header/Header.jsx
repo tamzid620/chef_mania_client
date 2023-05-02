@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DP from '../../../../public/andre-rush-compressed-700x700.jpeg';
-import carouselpic1 from '../../../../public/c1.jpg';
-import carouselpic2 from '../../../../public/c2.png';
-import carouselpic3 from '../../../../public/c3.jpg';
-import carouselpic4 from '../../../../public/c4.jpg';
+
 
 const Header = () => {
     return (
@@ -38,41 +35,8 @@ const Header = () => {
                     <div className="w-10 rounded-full">
                         <img src={DP} alt="" />
                     </div>
-                    <button className='bg-green-600 text-white ms-2 font-semibold px-5 py-2 rounded-md'>Login</button>
+                    <button className="btn btn-accent border-green-600 ms-2">Login</button>
                 </label>
-            </div>
-
-            <h1 style={{fontFamily: 'Dancing Script, cursive', fontWeight:700}}  className='flex justify-center mt-10 text-4xl text-green-700'>Welcome to ChedMania</h1>
-            {/* ------------------Carousel section---------------------- */}
-            <div className="carousel w-full h-96 mt-10 mb-20">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src={carouselpic1} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" className="btn btn-circle">❮</a>
-                        <a href="#slide2" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide2" className="carousel-item relative w-full">
-                    <img src={carouselpic2} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide3" className="carousel-item relative w-full">
-                    <img src={carouselpic3} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide4" className="carousel-item relative w-full">
-                    <img src={carouselpic4} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle">❮</a>
-                        <a href="#slide1" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
             </div>
         </div>
     );
