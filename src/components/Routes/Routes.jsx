@@ -34,10 +34,6 @@ import ChefInfo from "../Home/ChefInfo/ChefInfo";
           path: '/chefinfo',
           element:<ChefInfo></ChefInfo>,
         },
-        {
-          path: '/recipes',
-          element:<Recipes></Recipes>,
-        },
       ]
     },
   ]);
