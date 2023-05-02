@@ -3,7 +3,7 @@ import React from 'react';
 const Recipes = () => {
     return (
         <div>
-            <h1>khana party</h1>
+            <h1>Recipes</h1>
         </div>
     );
 };

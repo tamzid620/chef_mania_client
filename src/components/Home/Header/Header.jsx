@@ -19,7 +19,7 @@ const Header = () => {
                             <li><Link to="/blog">Blog</Link></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl text-green-600">ChefMania</a>
+                    <p className="font-semibold text-xl text-green-600">ChefMania</p>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

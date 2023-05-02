@@ -6,6 +6,7 @@ import Contact from "../Home/Header/Contact";
 import Blog from "../Home/Header/Blog";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Recipes from "../Home/Recipes/Recipes";
+import ChefInfo from "../Home/ChefInfo/ChefInfo";
   
   const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ import Recipes from "../Home/Recipes/Recipes";
         {
           path: '/blog',
           element:<Blog></Blog>,
+        },
+        {
+          path: '/chefinfo',
+          element:<ChefInfo></ChefInfo>,
         },
         {
           path: '/recipes',

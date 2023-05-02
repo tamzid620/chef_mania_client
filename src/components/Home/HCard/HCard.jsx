@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faThumbsUp} from "@fortawesome/free-solid-svg-icons";
@@ -15,9 +16,7 @@ const HCard = ({ chef }) => {
                     <p className='font-semibold'>Numbers of Recipes: {num_recipes}</p>
                     <p className='font-semibold'>Likes: {likes} <FontAwesomeIcon icon={faThumbsUp} style={{ color: "blue" }} /></p>
                     <div className="card-actions justify-end">
-                    <button className="btn btn-accent border-green-600">
-                        <Link to="/recipes">View Recipes</Link>
-                    </button>
+                    <Link to="/chefinfo"><button className="btn btn-accent border-green-600">View Recipes</button></Link>
                     </div>
                 </div>
             </div>
