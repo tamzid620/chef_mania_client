@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 const ChefInfo = () => {
     const [infos, setInfos] = useState([]);
+
+    const  handleAddToFavorites= () =>{
+        toast("add to your Favourite");
+    }
 
     useEffect(() => {
         fetch('http://localhost:5000/chefs')
@@ -12,7 +18,7 @@ const ChefInfo = () => {
     }, []);
     return (
         <div>
-              <h2 style={{ fontFamily: 'Dancing Script, cursive', fontWeight: 400 }} className='flex justify-center text-3xl mt-5 mb-5 text-green-600'> Chef Information </h2>
+            <h2 style={{ fontFamily: 'Dancing Script, cursive', fontWeight: 400 }} className='flex justify-center text-3xl mt-5 mb-5 text-green-600'> Chef Information </h2>
             {
                 infos.map(info => <div
                     key={info.id}
@@ -40,6 +46,7 @@ const ChefInfo = () => {
                                     <p><span className='font-semibold'>Ingredients:</span> {info.recipes[0].ingredients}</p>
                                     <p><span className='font-semibold'>Cooking Method:</span> {info.recipes[0].cooking_method}</p>
                                     <p><span className='font-semibold'>rating:</span> {info.recipes[0].rating}</p>
+                                    <button onClick={handleAddToFavorites} className="btn btn-accent border-green-600">add to Favorite</button>
                                 </div>
                             </div>
                             <div className="card w-96 glass">
@@ -49,6 +56,7 @@ const ChefInfo = () => {
                                     <p><span className='font-semibold'>Ingredients:</span> {info.recipes[1].ingredients}</p>
                                     <p><span className='font-semibold'>Cooking Method:</span> {info.recipes[1].cooking_method}</p>
                                     <p><span className='font-semibold'>rating:</span> {info.recipes[1].rating}</p>
+                                    <button onClick={handleAddToFavorites} className="btn btn-accent border-green-600">add to Favorite</button>
                                 </div>
                             </div>
                             <div className="card w-96 glass">
@@ -58,12 +66,14 @@ const ChefInfo = () => {
                                     <p><span className='font-semibold'>Ingredients:</span> {info.recipes[2].ingredients}</p>
                                     <p><span className='font-semibold'>Cooking Method:</span> {info.recipes[2].cooking_method}</p>
                                     <p><span className='font-semibold'>rating:</span> {info.recipes[2].rating}</p>
+                                    <button onClick={handleAddToFavorites} className="btn btn-accent border-green-600">add to Favorite</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>)
             }
+            <ToastContainer />
         </div>
     );
 };
