@@ -5,7 +5,6 @@ import carouselpic1 from '../../../../public/c1.jpg';
 import carouselpic2 from '../../../../public/c2.png';
 import carouselpic3 from '../../../../public/c3.jpg';
 import carouselpic4 from '../../../../public/c4.jpg';
-import './Header.css'
 
 const Header = () => {
     return (
@@ -43,7 +42,7 @@ const Header = () => {
                 </label>
             </div>
             {/* ------------------Carousel section---------------------- */}
-            <div className="carousel w-full h-96">
+            <div className="carousel w-full h-96 mt-20 mb-20">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={carouselpic1} className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
