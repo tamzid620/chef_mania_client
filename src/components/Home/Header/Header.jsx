@@ -41,8 +41,10 @@ const Header = () => {
                     <button className='bg-green-600 text-white ms-2 font-semibold px-5 py-2 rounded-md'>Login</button>
                 </label>
             </div>
+
+            <h1 style={{fontFamily: 'Dancing Script, cursive', fontWeight:700}}  className='flex justify-center mt-10 text-4xl text-green-700'>Welcome to ChedMania</h1>
             {/* ------------------Carousel section---------------------- */}
-            <div className="carousel w-full h-96 mt-20 mb-20">
+            <div className="carousel w-full h-96 mt-10 mb-20">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={carouselpic1} className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
