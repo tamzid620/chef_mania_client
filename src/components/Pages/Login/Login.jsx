@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import {GithubAuthProvider,GoogleAuthProvider,getAuth,onAuthStateChanged,signInWithEmailAndPassword,
@@ -16,6 +16,8 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/' ;
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -40,7 +42,7 @@ function Login() {
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    navigate('/')
+                    navigate(from, { replace: true })
                 })
                 .catch((error) => {
                     const errorCode = error.code;
