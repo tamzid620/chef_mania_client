@@ -4,9 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
-
-
-
     return (
         <div className="min-h-screen flex justify-center items-center mt-20 mb-20">
             <div className="max-w-md w-full">

@@ -5,7 +5,7 @@ import {faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
 const HCard = ({ chef }) => {
-    const {picture ,name,years_of_experience, num_recipes, likes} = chef;
+    const {picture ,name,years_of_experience, num_recipes, likes, id} = chef;
     return (
         <div>
             <div className="card lg:card-side bg-green-100 shadow-xl mb-10 line-height-1 ">
@@ -16,7 +16,7 @@ const HCard = ({ chef }) => {
                     <p className='font-semibold'>Numbers of Recipes: {num_recipes}</p>
                     <p className='font-semibold'>Likes: {likes} <FontAwesomeIcon icon={faThumbsUp} style={{ color: "blue" }} /></p>
                     <div className="card-actions justify-end">
-                    <Link to="/recipes"><button className="btn btn-accent border-green-600">View Recipes</button></Link>
+                    <Link to={`recipes/${id}`}><button className="btn btn-accent border-green-600">View Recipes</button></Link>
                     </div>
                 </div>
             </div>
