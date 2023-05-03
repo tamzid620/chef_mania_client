@@ -35,7 +35,9 @@ const Header = () => {
                     <div className="w-10 rounded-full">
                         <img src={DP} alt="" />
                     </div>
+                    <Link to="/login">
                     <button className="btn btn-accent border-green-600 ms-2">Login</button>
+                    </Link>
                 </label>
             </div>
         </div>

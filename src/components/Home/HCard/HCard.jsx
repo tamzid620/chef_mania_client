@@ -16,7 +16,7 @@ const HCard = ({ chef }) => {
                     <p className='font-semibold'>Numbers of Recipes: {num_recipes}</p>
                     <p className='font-semibold'>Likes: {likes} <FontAwesomeIcon icon={faThumbsUp} style={{ color: "blue" }} /></p>
                     <div className="card-actions justify-end">
-                    <Link to="/chefinfo"><button className="btn btn-accent border-green-600">View Recipes</button></Link>
+                    <Link to="/recipes"><button className="btn btn-accent border-green-600">View Recipes</button></Link>
                     </div>
                 </div>
             </div>
