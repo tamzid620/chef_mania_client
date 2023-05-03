@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import {GithubAuthProvider,GoogleAuthProvider,getAuth,onAuthStateChanged,signInWithEmailAndPassword,
+import {
+    GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithEmailAndPassword,
     signInWithPopup,
-    signOut,} from "firebase/auth";
+    signOut,
+} from "firebase/auth";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import app from "../../../firebase/firebase.config";
 
@@ -17,7 +19,8 @@ function Login() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/' ;
+    const from = location.state?.from?.pathname || '/';
+    
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -37,9 +40,10 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
-    const handleLogin = ()=> {
+    const handleLogin = () => {
         if (email && password) {
             signInWithEmailAndPassword(auth, email, password)
+            
                 .then((userCredential) => {
                     const user = userCredential.user;
                     navigate(from, { replace: true })
@@ -53,6 +57,7 @@ function Login() {
 
     const logout = () => {
         signOut(auth)
+        
             .then(() => {
             })
             .catch((error) => {
@@ -61,6 +66,7 @@ function Login() {
 
     const googleLogin = () => {
         signInWithPopup(auth, googleProvider)
+        
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -75,25 +81,25 @@ function Login() {
     };
     const githubLogin = () => {
         signInWithPopup(auth, githubProvider)
-        .then((result) => {
-          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-          const credential = GithubAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-      
-          // The signed-in user info.
-          const user = result.user;
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-        }).catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GithubAuthProvider.credentialFromError(error);
-          // ...
-        });
+            .then((result) => {
+                // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+                const credential = GithubAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+
+                // The signed-in user info.
+                const user = result.user;
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GithubAuthProvider.credentialFromError(error);
+                // ...
+            });
     }
 
     return (
@@ -166,7 +172,7 @@ function Login() {
                             type="submit"
                             className="w-full bg-blue-500 text-white rounded-md py-2 font-bold flex items-center justify-center"
                             onClick={() => googleLogin()}>
-                         <FaGoogle className="me-3" /> Google Sign-in
+                            <FaGoogle className="me-3" /> Google Sign-in
                         </button>
                     </div>
 
@@ -175,7 +181,7 @@ function Login() {
                             type="submit"
                             className="w-full bg-black text-white rounded-md py-2 font-bold  flex items-center justify-center"
                             onClick={() => githubLogin()}>
-                           <FaGithub className="me-3"/> GitHub Sign-in
+                            <FaGithub className="me-3" /> GitHub Sign-in
                         </button>
                     </div>
 
