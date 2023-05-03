@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faStar } from "@fortawesome/free-solid-svg-icons";
 import Rating from "react-rating";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Recipes = () => {
     const params = useParams();
@@ -14,8 +15,8 @@ const Recipes = () => {
     console.log(params.id);
 
     const [infos, setinfos] = useState({});
-
     const [disable, setDisable] = useState([]);
+    const {user} = useContext(AuthContext)
 
     const handleAddToFavorites = (name) => {
         toast("add to your Favourite");

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import {GithubAuthProvider,GoogleAuthProvider,getAuth,onAuthStateChanged,signInWithEmailAndPassword,
@@ -15,6 +15,7 @@ const githubProvider = new GithubAuthProvider();
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -33,27 +34,26 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+    };
+    const handleLogin = ()=> {
         if (email && password) {
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Signed in
                     const user = userCredential.user;
-                    // ...
+                    navigate('/')
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                 });
         }
-    };
+    }
 
     const logout = () => {
         signOut(auth)
             .then(() => {
-                // Sign-out successful.
             })
             .catch((error) => {
-                // An error happened.
             });
     };
 
@@ -146,7 +146,7 @@ function Login() {
                         </div>
                     </div>
                     <div className="mb-6">
-                        <button
+                        <button onClick={() => handleLogin()}
                             type="submit"
                             className="w-full bg-gray-900 text-white rounded-md py-2 font-bold">
                             Log in
@@ -168,7 +168,7 @@ function Login() {
                         </button>
                     </div>
 
-                    <div className="mt-5">
+                    <div className="mt-1">
                         <button
                             type="submit"
                             className="w-full bg-black text-white rounded-md py-2 font-bold  flex items-center justify-center"
@@ -177,14 +177,12 @@ function Login() {
                         </button>
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between  mt-3">
                         <div className="text-sm">
                             <Link
                                 to="/register"
                                 className="font-medium text-gray-900 hover:text-gray-700"
-                            >
-                                Create an account
-                            </Link>
+                            > Create an account?(visit Register)</Link>
                         </div>
 
                         <Link

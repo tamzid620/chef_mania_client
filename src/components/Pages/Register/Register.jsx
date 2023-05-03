@@ -157,6 +157,12 @@ function Register() {
               Register
             </button>
           </div>
+          <div className="text-sm mt-3">
+                            <Link
+                                to="/login"
+                                className="font-medium text-gray-900 hover:text-gray-700"
+                            > Already Have  an account?(visit login)</Link>
+                        </div>
         </form>
       </div>
 

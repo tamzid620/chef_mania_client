@@ -8,11 +8,13 @@ import HCard from '../HCard/HCard';
 
 const Home = () => {
     const [chefs, setChefs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5000/chefs')
             .then(res => res.json())
             .then(data => setChefs(data));
+        setLoading(false);
     }, []);
 
     return (
@@ -50,90 +52,102 @@ const Home = () => {
                 </div>
             </div>
 
-                {/* ----------------Weekly specials ---------- */}
+            {/* ----------------Weekly specials ---------- */}
             <div className='bg-black pt-3 pb-10'>
-            <h1 style={{ fontFamily: 'Dancing Script, cursive', fontWeight: 700 }} className='flex justify-center mt-10 text-4xl text-green-500 mb-20'>Weekly specials</h1>
-            <h3 style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }} className=" flex justify-center font-semibold text-4xl mt-3 mb-3 text-white">Menu Of the Day</h3>
-            <div className='flex justify-center'>
-            <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-5'>
-                <div style={{width:'500px'}} className='bg-white p-3 rounded-xl'>
-                    <div className='flex mb-3'>
-                    <div>
-                        <h3 className='font-semibold text-lg'>American Combo Menu</h3>
-                        <hr />
-                        <p className='text-gr'>Maecenas posuere dolor sit amet consectur adipiscing purus egestas diam sit vitae egestas suspendisse amet…</p>
-                    </div>
-                    <div>
-                        <p className='text-yellow-500 font-bold'>$12</p>
-                    </div>
-                    </div>
-                    <div className='flex mb-3'>
-                    <div>
-                        <h3 className='font-semibold text-lg'>Optic Breakfast Combo</h3>
-                        <hr />
-                        <p className='text-gr'>Nunc non tortor sed mi condimentum bibendum. Nunc sagittis elit nec ante facilisis varius. Aliquam…</p>
-                    </div>
-                    <div>
-                        <p className='text-yellow-500 font-bold'>$20</p>
-                    </div>
-                    </div>
-                    <div className='flex mb-3'>
-                    <div>
-                        <h3 className='font-semibold text-lg'>Buffalo Meat Recipie Combo</h3>
-                        <hr />
-                        <p className='text-gr'>Nullam sit amet lectus at mauris scelerisque egestas at quis orci. Sed id eros sed…</p>
-                    </div>
-                    <div>
-                        <p className='text-yellow-500 font-bold'>$30</p>
-                    </div>
+                <h1 style={{ fontFamily: 'Dancing Script, cursive', fontWeight: 700 }} className='flex justify-center mt-10 text-4xl text-green-500 mb-20'>Weekly specials</h1>
+                <h3 style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }} className=" flex justify-center font-semibold text-4xl mt-3 mb-3 text-white">Menu Of the Day</h3>
+                <div className='flex justify-center'>
+                    <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-5'>
+                        <div style={{ width: '500px' }} className='bg-white p-3 rounded-xl'>
+                            <div className='flex mb-3'>
+                                <div>
+                                    <h3 className='font-semibold text-lg'>American Combo Menu</h3>
+                                    <hr />
+                                    <p className='text-gr'>Maecenas posuere dolor sit amet consectur adipiscing purus egestas diam sit vitae egestas suspendisse amet…</p>
+                                </div>
+                                <div>
+                                    <p className='text-yellow-500 font-bold'>$12</p>
+                                </div>
+                            </div>
+                            <div className='flex mb-3'>
+                                <div>
+                                    <h3 className='font-semibold text-lg'>Optic Breakfast Combo</h3>
+                                    <hr />
+                                    <p className='text-gr'>Nunc non tortor sed mi condimentum bibendum. Nunc sagittis elit nec ante facilisis varius. Aliquam…</p>
+                                </div>
+                                <div>
+                                    <p className='text-yellow-500 font-bold'>$20</p>
+                                </div>
+                            </div>
+                            <div className='flex mb-3'>
+                                <div>
+                                    <h3 className='font-semibold text-lg'>Buffalo Meat Recipie Combo</h3>
+                                    <hr />
+                                    <p className='text-gr'>Nullam sit amet lectus at mauris scelerisque egestas at quis orci. Sed id eros sed…</p>
+                                </div>
+                                <div>
+                                    <p className='text-yellow-500 font-bold'>$30</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ width: '500px' }} className='bg-white p-3 rounded-xl'>
+                            <div className='flex mb-3'>
+                                <div>
+                                    <h3 className='font-semibold text-lg'>Strawberry Jam French Toast</h3>
+                                    <hr />
+                                    <p className='text-gr'>Ut neque turpis, laoreet quis porttitor eu, scelerisque pellentesque dui. Suspendisse nec justo lacus. Quisque…</p>
+                                </div>
+                                <div>
+                                    <p className='text-yellow-500 font-bold'>$15</p>
+                                </div>
+                            </div>
+                            <div className='flex mb-3'>
+                                <div>
+                                    <h3 className='font-semibold text-lg'>Truly Amazing Blueberry Recipes</h3>
+                                    <hr />
+                                    <p className='text-gr'>Fusce sagittis eros nec sapien sagittis auctor. Tortor sed ipsum dolor sit amet, consectetur adipiscing…</p>
+                                </div>
+                                <div>
+                                    <p className='text-yellow-500 font-bold'>$25</p>
+                                </div>
+                            </div>
+                            <div className='flex mb-3'>
+                                <div>
+                                    <h3 className='font-semibold text-lg'>Toast Breakfast Menu Item</h3>
+                                    <hr />
+                                    <p className='text-gr'>Praesent tellus leo, finibus in ex nec, malesuada blandit arcu. In id quam eget sem…</p>
+                                </div>
+                                <div>
+                                    <p className='text-yellow-500 font-bold'>$45</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div style={{width:'500px'}} className='bg-white p-3 rounded-xl'>
-                    <div className='flex mb-3'>
-                    <div>
-                        <h3 className='font-semibold text-lg'>Strawberry Jam French Toast</h3>
-                        <hr />
-                        <p className='text-gr'>Ut neque turpis, laoreet quis porttitor eu, scelerisque pellentesque dui. Suspendisse nec justo lacus. Quisque…</p>
-                    </div>
-                    <div>
-                        <p className='text-yellow-500 font-bold'>$15</p>
-                    </div>
-                    </div>
-                    <div className='flex mb-3'>
-                    <div>
-                        <h3 className='font-semibold text-lg'>Truly Amazing Blueberry Recipes</h3>
-                        <hr />
-                        <p className='text-gr'>Fusce sagittis eros nec sapien sagittis auctor. Tortor sed ipsum dolor sit amet, consectetur adipiscing…</p>
-                    </div>
-                    <div>
-                        <p className='text-yellow-500 font-bold'>$25</p>
-                    </div>
-                    </div>
-                    <div className='flex mb-3'>
-                    <div>
-                        <h3 className='font-semibold text-lg'>Toast Breakfast Menu Item</h3>
-                        <hr />
-                        <p className='text-gr'>Praesent tellus leo, finibus in ex nec, malesuada blandit arcu. In id quam eget sem…</p>
-                    </div>
-                    <div>
-                        <p className='text-yellow-500 font-bold'>$45</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            </div>
             </div>
             {/*------------------------ Our Chef ---------------------------- */}
             <div>
                 <h1 style={{ fontFamily: 'Dancing Script, cursive', fontWeight: 700 }} className='flex justify-center mt-10 text-4xl text-green-700 mb-20'>Our Chef</h1>
-                {
-                    chefs.map(chef => <HCard
-                    key={chef.id}
-                    chef= {chef}
-                    >
-                        
-                    </HCard>)
-                }
+
+                {loading ? (
+                    <div className=" flex justify-center">
+                        <div
+                            className="radial-progress animate-spin my-3 mb-10"
+                            style={{ "--value": 50 }}
+                        ></div>
+                    </div>
+                ) : (
+                    <div>
+                        {
+                            chefs.map(chef => <HCard
+                                key={chef.id}
+                                chef={chef}
+                            >
+
+                            </HCard>)
+                        }
+                    </div>
+                )}
             </div>
 
             {/*-------------------- Our Story --------------------- */}
