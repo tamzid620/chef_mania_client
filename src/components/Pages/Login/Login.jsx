@@ -5,6 +5,7 @@ import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import {GithubAuthProvider,GoogleAuthProvider,getAuth,onAuthStateChanged,signInWithEmailAndPassword,
     signInWithPopup,
     signOut,} from "firebase/auth";
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import app from "../../../firebase/firebase.config";
 
 const auth = getAuth();
@@ -161,18 +162,18 @@ function Login() {
                     <div>
                         <button
                             type="submit"
-                            className="w-full bg-blue-500 text-white rounded-md py-2 font-bold"
+                            className="w-full bg-blue-500 text-white rounded-md py-2 font-bold flex items-center justify-center"
                             onClick={() => googleLogin()}>
-                            Google Sign-in
+                         <FaGoogle className="me-3" /> Google Sign-in
                         </button>
                     </div>
 
                     <div className="mt-5">
                         <button
                             type="submit"
-                            className="w-full bg-black text-white rounded-md py-2 font-bold"
+                            className="w-full bg-black text-white rounded-md py-2 font-bold  flex items-center justify-center"
                             onClick={() => githubLogin()}>
-                            GitHub Sign-in
+                           <FaGithub className="me-3"/> GitHub Sign-in
                         </button>
                     </div>
 
