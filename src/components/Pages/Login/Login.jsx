@@ -2,16 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-
-import {
-    GithubAuthProvider,
-    GoogleAuthProvider,
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
+import {GithubAuthProvider,GoogleAuthProvider,getAuth,onAuthStateChanged,signInWithEmailAndPassword,
     signInWithPopup,
-    signOut,
-} from "firebase/auth";
+    signOut,} from "firebase/auth";
 import app from "../../../firebase/firebase.config";
 
 const auth = getAuth();
