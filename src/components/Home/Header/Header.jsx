@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import DP from '../../../../public/andre-rush-compressed-700x700.jpeg';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Header = () => {
+    const {user} =  useContext(AuthContext)
+    console.log(user)
     return (
         <div>
             {/*------------------------- Navbar section ---------------------- */}
@@ -28,9 +31,7 @@ const Header = () => {
                         <li><Link to="/blog">Blog</Link></li>
                     </ul>
                 </div>
-                {/* <div className="navbar-end">
-                    <button className='bg-green-600 text-white font-semibold px-5 py-2 rounded-md'>Blog</button>
-                </div> */}
+                {user && <span>welcome {user.email}</span> }
                 <label className="navbar-end btn-circle avatar">
                     <div className="w-10 rounded-full">
                         <img src={DP} alt="" />
@@ -39,6 +40,7 @@ const Header = () => {
                     <button className="btn btn-accent border-green-600 ms-2">Login</button>
                     </Link>
                 </label>
+               
             </div>
         </div>
     );
