@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faStar } from "@fortawesome/free-solid-svg-icons";
 import Rating from "react-rating";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Recipes = () => {
     const params = useParams();
@@ -42,7 +43,12 @@ const Recipes = () => {
                 <div className="mb-5 border  bg-green-100 p-3">
                     <div className="flex items-center">
                         <div>
-                            <img style={{ width: "700px" }} src={infos?.picture} alt="" />
+                            <LazyLoadImage
+                                alt={"Album"}
+                                src={infos?.picture}
+                                style={{ width: "700px" }}
+                            />
+
                         </div>
                         <div className="ms-2">
                             <h2
@@ -77,10 +83,10 @@ const Recipes = () => {
                             return (
                                 <div key={key} className="card w-96 glass">
                                     <figure>
-                                        <img
-                                            style={{ width: "300px" }}
+                                        <LazyLoadImage
+                                            alt={"Album"}
                                             src={recipe?.picture}
-                                            alt="car!"
+                                            style={{ width: '300px' }}
                                         />
                                     </figure>
                                     <div className="card-body">
@@ -96,36 +102,36 @@ const Recipes = () => {
                                             </span>{" "}
                                         </p>
                                         <div>
-                                        <p>
-                                            <span className="font-semibold ">
-                                                rating: {recipe.rating}{" "}
-                                                <Rating
-                                                    emptySymbol={<FontAwesomeIcon icon={faStar} className="text-white-400" />}
-                                                    fullSymbol={<FontAwesomeIcon icon={faStar} className="text-yellow-400" />}
-                                                    initialRating={recipe.rating}
-                                                    readonly
-                                                />
-                                            </span>
-                                        </p>
+                                            <p>
+                                                <span className="font-semibold ">
+                                                    rating: {recipe.rating}{" "}
+                                                    <Rating
+                                                        emptySymbol={<FontAwesomeIcon icon={faStar} className="text-white-400" />}
+                                                        fullSymbol={<FontAwesomeIcon icon={faStar} className="text-yellow-400" />}
+                                                        initialRating={recipe.rating}
+                                                        readonly
+                                                    />
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <button
+                                            onClick={() => handleAddToFavorites(recipe.name)}
+                                            disabled={
+                                                disable.filter((a) => a == recipe.name).length ? true : false
+                                            }
+                                            className="btn btn-accent border-green-600"
+                                        >
+                                            add to Favorite
+                                        </button>
                                     </div>
-                                    <button
-                                        onClick={() => handleAddToFavorites(recipe.name)}
-                                        disabled={
-                                            disable.filter((a) => a == recipe.name).length ? true : false
-                                        }
-                                        className="btn btn-accent border-green-600"
-                                    >
-                                        add to Favorite
-                                    </button>
                                 </div>
-                                </div>
-                    );
+                            );
                         })}
+                    </div>
                 </div>
-            </div>
 
-            <ToastContainer />
-        </div>
+                <ToastContainer />
+            </div>
         </div >
     );
 };
