@@ -88,7 +88,7 @@ const Recipes = () => {
                         </h2>
                         {/* -------------recipes list -------- */}
 
-                        <div className="mt-5 flex  grid sm:grid-cols-1 lg:grid-cols-3">
+                        <div className="mt-5  grid sm:grid-cols-1 lg:grid-cols-3">
                             {
                                 infos?.recipes?.map((recipe, key) => {
                                     return (

@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+import app from "../../../firebase/firebase.config";
+
 import {
-    GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithEmailAndPassword,
+    GithubAuthProvider,
+    GoogleAuthProvider,
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import { FaGoogle, FaGithub } from 'react-icons/fa';
-import app from "../../../firebase/firebase.config";
+import { ToastContainer, toast } from "react-toastify";
 
 const auth = getAuth();
 const googleProvider = new GoogleAuthProvider();
@@ -17,10 +23,10 @@ const githubProvider = new GithubAuthProvider();
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
-
+    const from = location.state?.from?.pathname || "/";
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -33,45 +39,40 @@ function Login() {
     useEffect(() => {
         if (app) {
             onAuthStateChanged(auth, (user) => {
+                console.log(user);
             });
         }
     }, [app]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    };
-    const handleLogin = () => {
         if (email && password) {
             signInWithEmailAndPassword(auth, email, password)
-
                 .then((userCredential) => {
+                    // Signed in
                     const user = userCredential.user;
-                    navigate(from, { replace: true })
+                    navigate(from, { replace: true });
+
+                    // ...
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+                    toast(errorMessage);
                 });
+        } else {
+            toast("Please Fill Email Field And Password");
+            return;
         }
-    }
-
-    const logout = () => {
-        signOut(auth)
-
-            .then(() => {
-            })
-            .catch((error) => {
-            });
     };
 
     const googleLogin = () => {
         signInWithPopup(auth, googleProvider)
-
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -80,24 +81,25 @@ function Login() {
                 const credential = GoogleAuthProvider.credentialFromError(error);
             });
     };
-    const githubLogin = () => {
+    const gitHubLogin = () => {
         signInWithPopup(auth, githubProvider)
             .then((result) => {
                 const credential = GithubAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
-                navigate(from, { replace: true })
-            }).catch((error) => {
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 const email = error.customData.email;
                 const credential = GithubAuthProvider.credentialFromError(error);
                 // ...
             });
-    }
+    };
 
     return (
-        <div className="min-h-screen flex justify-center items-center mt-20 mb-20">
+        <div className="min-h-screen flex justify-center items-center bg-gray-100">
             <div className="max-w-md w-full">
                 <h1 className="text-3xl font-bold text-gray-900 mb-6">Log in</h1>
                 <form onSubmit={handleSubmit}>
@@ -149,56 +151,49 @@ function Login() {
                     </div>
                     <div className="mb-6">
                         <button
-                            onClick={() => handleLogin()}
                             type="submit"
                             className="w-full bg-gray-900 text-white rounded-md py-2 font-bold"
                         >
                             Log in
                         </button>
-                        <button onClick={() => {
-                            logout();
-                        }}
-                            type="submit"
-                            className="w-full bg-gray-900 text-white rounded-md py-2 font-bold mt-2" > Log out
-                        </button>
-                    </div>
-
-                    <div>
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-500 text-white rounded-md py-2 font-bold flex items-center justify-center"
-                            onClick={() => googleLogin()}>
-                            <FaGoogle className="me-3" /> Google Sign-in
-                        </button>
-                    </div>
-
-                    <div className="mt-1">
-                        <button
-                            type="submit"
-                            className="w-full bg-black text-white rounded-md py-2 font-bold  flex items-center justify-center"
-                            onClick={() => githubLogin()}>
-                            <FaGithub className="me-3" /> GitHub Sign-in
-                        </button>
-                    </div>
-
-                    <div className="flex items-center justify-between  mt-3">
-                        <div className="text-sm">
-                            <Link
-                                to="/register"
-                                className="font-medium text-gray-900 hover:text-gray-700"
-                            > Create an account?(visit Register)</Link>
-                        </div>
-
-                        <Link
-                            to="/forgot-password"
-                            className="
-            font-medium text-gray-900 hover:text-gray-700"
-                        >
-                            Forgot Password
-                        </Link>
                     </div>
                 </form>
+                <div>
+                    <button
+                        type="submit" className="w-full bg-blue-500 text-white rounded-md py-2 font-bold flex items-center justify-center" onClick={() => googleLogin()}>
+                        <FaGoogle className="me-3" /> Google Sign-in
+                    </button>
+                </div>
+
+                <div className="mt-1">
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white rounded-md py-2 font-bold  flex items-center justify-center"
+                        onClick={() => githubLogin()}>
+                        <FaGithub className="me-3" /> GitHub Sign-in
+                    </button>                     </div>
+
+                <div className="flex items-center justify-between">
+                    <div className="text-sm">
+                        <Link
+                            to="/register"
+                            className="font-medium text-gray-900 hover:text-gray-700"
+                        >
+                            Create an account
+                        </Link>
+                    </div>
+
+                    <Link
+                        to="/forgot-password"
+                        className="
+            font-medium text-gray-900 hover:text-gray-700"
+                    >
+                        Forgot Password
+                    </Link>
+                </div>
             </div>
+
+            <ToastContainer />
         </div>
     );
 }
