@@ -47,7 +47,7 @@ const Recipes = () => {
                         className="flex justify-center text-3xl mt-5 mb-5 text-green-600"
                     >
                         {" "}
-                        Chef infos?rmation{" "}
+                        Chef info{" "}
                     </h2>
 
                     <div className="mb-5 border  bg-green-100 p-3">
