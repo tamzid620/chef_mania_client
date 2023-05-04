@@ -11,7 +11,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/chefs')
+        fetch('https://chef-mania-server-forced783-gmailcom.vercel.app/chefs')
             .then(res => res.json())
             .then(data => setChefs(data));
         setLoading(false);

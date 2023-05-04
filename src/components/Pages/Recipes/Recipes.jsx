@@ -24,7 +24,7 @@ const Recipes = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/chefs/${params.id}`)
+        fetch(`https://chef-mania-server-forced783-gmailcom.vercel.app/chefs/${params.id}`)
             .then((res) => res.json())
             .then((data) => setinfos(data));
         setLoading(false);
