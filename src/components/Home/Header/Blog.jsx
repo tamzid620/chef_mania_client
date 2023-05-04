@@ -1,9 +1,22 @@
 import React from 'react';
-
+import ReactToPrint from 'react-to-print';
+import { useRef } from 'react';
 const Blog = () => {
+    const ref = useRef()
     return (
         <div>
-            <div className='mt-20 mb-20'>
+            <div className='mt-10  p-5'>
+            <div className='flex justify-center mb-3'>
+                <h1 className='font-semibold'>Download Your PDF File</h1>
+            </div>
+            <div  className='flex justify-center'>
+                <ReactToPrint  trigger={() => 
+                <button className="btn glass text-green-800">Print</button>}
+                content={()=> ref.current}>
+                </ReactToPrint>
+            </div>
+            </div>
+            <div ref={ref} className='mt-20 mb-20'>
                 <h2 className='flex justify-center text-green-400 font-semibold text-7xl mb-10 mt-5'>Question <span className='text-black'>and</span> Answer</h2>
 
                 <div className='text-left'>
@@ -32,7 +45,7 @@ const Blog = () => {
                     <p className='font-semibold  text-2xl text-red-600'>
                         A:Node.js is a runtime environment, and provides the foundation for building server-side applications, <br />
                         Express.js is a web application framework built on top of Node.js , and provides a set of tools and features to make building web applications and APIs easier and more efficient.
-                         
+
                     </p>
 
                     <br />
