@@ -20,7 +20,7 @@ function Login() {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    
+
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -43,7 +43,7 @@ function Login() {
     const handleLogin = () => {
         if (email && password) {
             signInWithEmailAndPassword(auth, email, password)
-            
+
                 .then((userCredential) => {
                     const user = userCredential.user;
                     navigate(from, { replace: true })
@@ -57,7 +57,7 @@ function Login() {
 
     const logout = () => {
         signOut(auth)
-        
+
             .then(() => {
             })
             .catch((error) => {
@@ -66,7 +66,7 @@ function Login() {
 
     const googleLogin = () => {
         signInWithPopup(auth, googleProvider)
-        
+
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -84,6 +84,7 @@ function Login() {
             .then((result) => {
                 const credential = GithubAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
+
                 const user = result.user;
             }).catch((error) => {
                 const errorCode = error.code;
@@ -146,9 +147,11 @@ function Login() {
                         </div>
                     </div>
                     <div className="mb-6">
-                        <button onClick={() => handleLogin()}
+                        <button
+                            onClick={() => handleLogin()}
                             type="submit"
-                            className="w-full bg-gray-900 text-white rounded-md py-2 font-bold">
+                            className="w-full bg-gray-900 text-white rounded-md py-2 font-bold"
+                        >
                             Log in
                         </button>
                         <button onClick={() => {
