@@ -49,18 +49,18 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <Link to="/"><li className="text-white">Home</li></Link>
-              <Link to="/blog"><li className="text-white">Blog</li></Link>
-              <Link to="/about"><li className="text-white">About</li></Link>
+              <Link to="/"><li className="text-black font-semibold">Home</li></Link>
+              <Link to="/blog"><li className="text-black font-semibold">Blog</li></Link>
+              <Link to="/about"><li className="text-black font-semibold">About</li></Link>
             </ul>
           </div>
-          <p className="btn btn-ghost normal-case text-xl text-white">ChefMania</p>
+          <p className=" text-xl font-semibold text-black">ChefMania</p>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <Link to="/"><li className="text-white">Home</li></Link>
-            <Link to="/blog"><li className="text-white ms-5">Blog</li></Link>
-            <Link to="/about"><li className="text-white ms-5">About</li></Link>
+            <Link to="/"><li className="text-black font-semibold">Home</li></Link>
+            <Link to="/blog"><li className="text-black font-semibold ms-5">Blog</li></Link>
+            <Link to="/about"><li className="text-black font-semibold ms-5">About</li></Link>
           </ul>
         </div>
 
@@ -80,7 +80,7 @@ const Header = () => {
               </button>
             ) : (
               <Link to="/login">
-                <button className="btn btn-outline text-white">Log In</button>
+                <button className="btn btn-outline text-black">Log In</button>
               </Link>
             )}
           </div>

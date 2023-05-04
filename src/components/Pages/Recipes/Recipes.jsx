@@ -88,55 +88,57 @@ const Recipes = () => {
                         </h2>
                         {/* -------------recipes list -------- */}
 
-                        <div className="mt-5 flex gap-5">
-                            {infos?.recipes?.map((recipe, key) => {
-                                return (
-                                    <div key={key} className="card w-96 glass">
-                                        <figure>
-                                            <LazyLoadImage
-                                                alt={"Album"}
-                                                src={recipe?.picture}
-                                                style={{ width: '300px' }}
-                                            />
-                                        </figure>
-                                        <div className="card-body">
-                                            <h2 className="card-title">{recipe.name}</h2>
-                                            <p>
-                                                <span className="font-semibold">
-                                                    Ingredients: {recipe.ingredients}
-                                                </span>
-                                            </p>
-                                            <p>
-                                                <span className="font-semibold">
-                                                    Cooking Method: {recipe.cooking_method}
-                                                </span>{" "}
-                                            </p>
-                                            <div>
+                        <div className="mt-5 flex  grid sm:grid-cols-1 lg:grid-cols-3">
+                            {
+                                infos?.recipes?.map((recipe, key) => {
+                                    return (
+                                        <div key={key} className=" card w-96 glass">
+                                            <figure>
+                                                <LazyLoadImage
+                                                    alt={"Album"}
+                                                    src={recipe?.picture}
+                                                    style={{ width: '300px' }}
+                                                />
+                                            </figure>
+                                            <div className="card-body">
+                                                <h2 className="card-title">{recipe.name}</h2>
                                                 <p>
-                                                    <span className="font-semibold ">
-                                                        rating: {recipe.rating}{" "}
-                                                        <Rating
-                                                            emptySymbol={<FontAwesomeIcon icon={faStar} className="text-white-400" />}
-                                                            fullSymbol={<FontAwesomeIcon icon={faStar} className="text-yellow-400" />}
-                                                            initialRating={recipe.rating}
-                                                            readonly
-                                                        />
+                                                    <span className="font-semibold">
+                                                        Ingredients: {recipe.ingredients}
                                                     </span>
                                                 </p>
+                                                <p>
+                                                    <span className="font-semibold">
+                                                        Cooking Method: {recipe.cooking_method}
+                                                    </span>{" "}
+                                                </p>
+                                                <div>
+                                                    <p>
+                                                        <span className="font-semibold ">
+                                                            rating: {recipe.rating}{" "}
+                                                            <Rating
+                                                                emptySymbol={<FontAwesomeIcon icon={faStar} className="text-white-400" />}
+                                                                fullSymbol={<FontAwesomeIcon icon={faStar} className="text-yellow-400" />}
+                                                                initialRating={recipe.rating}
+                                                                readonly
+                                                            />
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <button
+                                                    onClick={() => handleAddToFavorites(recipe.name)}
+                                                    disabled={
+                                                        disable.filter((a) => a == recipe.name).length ? true : false
+                                                    }
+                                                    className="btn btn-accent border-green-600"
+                                                >
+                                                    add to Favorite
+                                                </button>
                                             </div>
-                                            <button
-                                                onClick={() => handleAddToFavorites(recipe.name)}
-                                                disabled={
-                                                    disable.filter((a) => a == recipe.name).length ? true : false
-                                                }
-                                                className="btn btn-accent border-green-600"
-                                            >
-                                                add to Favorite
-                                            </button>
                                         </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })
+                            }
                         </div>
                     </div>
 

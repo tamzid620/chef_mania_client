@@ -71,6 +71,7 @@ function Login() {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -84,8 +85,8 @@ function Login() {
             .then((result) => {
                 const credential = GithubAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-
                 const user = result.user;
+                navigate(from, { replace: true })
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
